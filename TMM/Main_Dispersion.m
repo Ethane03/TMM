@@ -1,4 +1,4 @@
-%clear all; close all; clc;
+clear all; close all; clc;
 currentfolder = pwd;
 
 %% Structure Definition and Sampling Parameters
