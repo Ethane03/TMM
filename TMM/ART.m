@@ -6,15 +6,11 @@ function [Rs,Rp,Ts,Tp,Ms,Ds,Mp,Dp,kx,n,beta,P,d,k0] = ART(d,lambda0,theta0,n_str
     N = numel(d);
 
 
-    n_cpu = zeros(L,length(n_structure));
+    n = zeros(L,length(n_structure));
     for i = 1:length(n_structure)
-        n_cpu(:,i) = selectmaterial(n_structure(i), lambda0);
+        n(:,i) = selectmaterial(n_structure(i), lambda0);
     end
 
-    lambda0 = gpuArray(lambda0);
-    theta0  = gpuArray(theta0);
-    d       = gpuArray(d);
-    n       = gpuArray(n_cpu);
 
 
     [lambda_grid, theta_grid] = ndgrid(lambda0, theta0);
@@ -29,11 +25,11 @@ function [Rs,Rp,Ts,Tp,Ms,Ds,Mp,Dp,kx,n,beta,P,d,k0] = ART(d,lambda0,theta0,n_str
     kx = zeros(N,L,M);
     beta = n(:,:,1) .* k0 .* sin(theta_grid);
 
-    Ms = repmat(gpuArray.eye(2),1,1,L,M);
+    Ms = repmat(eye(2),1,1,L,M);
     Mp = Ms;
-    P = zeros(N,2,2,L,M,'gpuArray');
-    Ds = zeros(N,2,2,L,M,'gpuArray');
-    Dp = zeros(N,2,2,L,M,'gpuArray');
+    P = zeros(N,2,2,L,M);
+    Ds = zeros(N,2,2,L,M);
+    Dp = zeros(N,2,2,L,M);
     for c = 1:N-1
 
         nc  = n(:,:,c);
@@ -87,16 +83,4 @@ function [Rs,Rp,Ts,Tp,Ms,Ds,Mp,Dp,kx,n,beta,P,d,k0] = ART(d,lambda0,theta0,n_str
 
     Tp = (real(n(:,:,N).*cos(theta_out)) ./ real(n(:,:,1).*cos(theta_grid))) ...
          .* abs(1./Mp11).^2;
-
-    Rs = gather(Rs);
-    Rp = gather(Rp);
-    Ts = gather(Ts);
-    Tp = gather(Tp);
-    d = gather(d);
-    n = gather(n);
-    Ds = gather(Ds);
-    Dp = gather(Dp);
-    P = gather(P);
-    k0 = gather(k0);
-    beta = gather(beta);
 end

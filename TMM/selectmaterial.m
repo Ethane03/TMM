@@ -15,8 +15,8 @@ function n_output = selectmaterial(material, lambda0)
                        1i*interp1(nk_SiN(:,1),nk_SiN(:,3),x','linear','extrap');
         case "tio2"
             load('nk_TiO2_Sarkar.mat');
-            n_output = interp1(nk_TiO2(:,1),nk_TiO2(:,2),x','pchip','extrap') + ...
-                       1i*interp1(nk_TiO2(:,1),nk_TiO2(:,3),x','pchip','extrap');
+            n_output = interp1(nk_TiO2(:,1),nk_TiO2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_TiO2(:,1),nk_TiO2(:,3),x','linear','extrap');
         case "tio2_stf"
             load('nk_TiO2_stf.mat');
             n_output = interp1(nk_TiO2(:,1),nk_TiO2(:,2),x','pchip','extrap') + ...
@@ -67,18 +67,18 @@ function n_output = selectmaterial(material, lambda0)
                                9.452943./(1-(24.320570./x).^2));
         case "nb2o5"
             load('nk_Na2O5_Lemarchand.mat');
-            n_output = interp1(nk_Na2O5(:,1),nk_Na2O5(:,2),x') + ...
-                       1i*interp1(nk_Na2O5(:,1),nk_Na2O5(:,3),x');
+            n_output = interp1(nk_Na2O5(:,1),nk_Na2O5(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Na2O5(:,1),nk_Na2O5(:,3),x','linear','extrap');
 
         case "si"
             load('nk_Si_Schinke.mat');
-            n_output = interp1(nk_Si(:,1),nk_Si(:,2),x') + ...
-                       1i*interp1(nk_Si(:,1),nk_Si(:,3),x');
+            n_output = interp1(nk_Si(:,1),nk_Si(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Si(:,1),nk_Si(:,3),x','linear','extrap');
 
         case "ta2o5"
             load('nk_Ta2O5_Rodriguez.mat');
-            n_output = interp1(nk_Ta2O5(:,1),nk_Ta2O5(:,2),x') + ...
-                       1i*interp1(nk_Ta2O5(:,1),nk_Ta2O5(:,3),x');
+            n_output = interp1(nk_Ta2O5(:,1),nk_Ta2O5(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Ta2O5(:,1),nk_Ta2O5(:,3),x','linear','extrap');
 
         case "bk7"
             n_output = sqrt(1+1.03961212./(1-0.00600069867./x.^2)+ ...
@@ -86,70 +86,70 @@ function n_output = selectmaterial(material, lambda0)
                        1.01046945./(1-103.560653./x.^2));
         case "ge"
             load('nk_Ge_Ciesielski_2nm.mat');
-            n_output = interp1(nk_Ge_Ciesielski_2nm(:,1),nk_Ge_Ciesielski_2nm(:,2),x') + ...
-                       1i*interp1(nk_Ge_Ciesielski_2nm(:,1),nk_Ge_Ciesielski_2nm(:,3),x');
+            n_output = interp1(nk_Ge_Ciesielski_2nm(:,1),nk_Ge_Ciesielski_2nm(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Ge_Ciesielski_2nm(:,1),nk_Ge_Ciesielski_2nm(:,3),x','linear','extrap');
 
         case "ag"
             load('nk_Ag_Johnson.mat');
-            n_output = interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,2),x') + ...
-                       1i*interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,3),x');
+            n_output = interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,3),x','linear','extrap');
 
         case "dye1"
             load('nk_dye_Evros.mat');
-            n_output = interp1(nk_dye_Evros(:,1),nk_dye_Evros(:,2),x') + ...
-                       1i*interp1(nk_dye_Evros(:,1),nk_dye_Evros(:,3),x');
+            n_output = interp1(nk_dye_Evros(:,1),nk_dye_Evros(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_dye_Evros(:,1),nk_dye_Evros(:,3),x','linear','extrap');
         case "dye2"
             load('nk_dye_pm605tcnq.mat');
-            n_output = interp1(nk_dye_pm605tcnq(:,1),nk_dye_pm605tcnq(:,2),x') + ...
-                       1i*interp1(nk_dye_pm605tcnq(:,1),nk_dye_pm605tcnq(:,3),x');
+            n_output = interp1(nk_dye_pm605tcnq(:,1),nk_dye_pm605tcnq(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_dye_pm605tcnq(:,1),nk_dye_pm605tcnq(:,3),x','linear','extrap');
         case "r6g_1"
             load('nk_R6G_1.mat');
-            n_output = interp1(nk_R6G_1(:,1),nk_R6G_1(:,2),x') + ...
-                       1i*interp1(nk_R6G_1(:,1),nk_R6G_1(:,3),x')*2;
+            n_output = interp1(nk_R6G_1(:,1),nk_R6G_1(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_R6G_1(:,1),nk_R6G_1(:,3),x','linear','extrap');
         case "r6g_2"
             load('nk_R6G_2.mat');
-            n_output = interp1(nk_R6G_2(:,1),nk_R6G_2(:,2),x') + ...
-                       1i*interp1(nk_R6G_2(:,1),nk_R6G_2(:,3),x')*2;
+            n_output = interp1(nk_R6G_2(:,1),nk_R6G_2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_R6G_2(:,1),nk_R6G_2(:,3),x','linear','extrap')*2;
         case "r6g_4"
             load('nk_R6G_4.mat');
-            n_output = interp1(nk_R6G_4(:,1),nk_R6G_4(:,2),x') + ...
-                       1i*interp1(nk_R6G_4(:,1),nk_R6G_4(:,3),x')*2;
+            n_output = interp1(nk_R6G_4(:,1),nk_R6G_4(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_R6G_4(:,1),nk_R6G_4(:,3),x','linear','extrap');
         case "wse2"
             load('nk_WSe2_Hsu.mat');
-            n_output = interp1(nk_wse2(:,1),nk_wse2(:,2),x') + ...
-                       1i*interp1(nk_wse2(:,1),nk_wse2(:,3),x');  
+            n_output = interp1(nk_wse2(:,1),nk_wse2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_wse2(:,1),nk_wse2(:,3),x','linear','extrap');  
         case "ws2"
             load('nk_WS2_Hsu.mat');
-            n_output = interp1(nk_ws2(:,1),nk_ws2(:,2),x') + ...
-                       1i*interp1(nk_ws2(:,1),nk_ws2(:,3),x'); 
+            n_output = interp1(nk_ws2(:,1),nk_ws2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_ws2(:,1),nk_ws2(:,3),x','linear','extrap'); 
         case "teo2"
             load('nk_TeO2.mat');
-            n_output = interp1(nk_wse2(:,1),nk_wse2(:,2),x') + ...
-                       1i*interp1(nk_wse2(:,1),nk_wse2(:,3),x'); 
+            n_output = interp1(nk_wse2(:,1),nk_wse2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_wse2(:,1),nk_wse2(:,3),x','linear','extrap'); 
         case "lif"
             load('nk_LiF.mat');
-            n_output = interp1(nk_wse2(:,1),nk_wse2(:,2),x') + ...
-                       1i*interp1(nk_wse2(:,1),nk_wse2(:,3),x'); 
+            n_output = interp1(nk_wse2(:,1),nk_wse2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_wse2(:,1),nk_wse2(:,3),x','linear','extrap'); 
         case "al2o3"
             load('nk_Al2O3.mat');
             n_output = interp1(nk_SiO2(:,1),nk_SiO2(:,2),x','linear','extrap') + ...
                        1i*interp1(nk_SiO2(:,1),nk_SiO2(:,3),x','linear','extrap'); 
        case "mgf2"
             load('nk_MgF2.mat');
-            n_output = interp1(nk_MgF2(:,1),nk_MgF2(:,2),x') + ...
-                       1i*interp1(nk_MgF2(:,1),nk_MgF2(:,3),x'); 
+            n_output = interp1(nk_MgF2(:,1),nk_MgF2(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_MgF2(:,1),nk_MgF2(:,3),x','linear','extrap'); 
         case "pmma"
             load('nk_pmma_Evros.mat');
             n_output = interp1(nk_PMMA450(:,1),nk_PMMA450(:,2),x','linear','extrap') + ...
-                       1i*interp1(nk_PMMA450(:,1),nk_PMMA450(:,3),x','linear','extrap') + 0.0001*1i; 
+                       1i*interp1(nk_PMMA450(:,1),nk_PMMA450(:,3),x','linear','extrap'); 
         case "hybrid_20"
             load('nk_Hybrid_20.mat');
-            n_output = interp1(nk_Hybrid(:,1),nk_Hybrid(:,2),x') + ...
-                       1i*interp1(nk_Hybrid(:,1),nk_Hybrid(:,3),x'); 
+            n_output = interp1(nk_Hybrid(:,1),nk_Hybrid(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Hybrid(:,1),nk_Hybrid(:,3),x','linear','extrap'); 
         case "hybrid_40"
             load('nk_Hybrid_40.mat');
-            n_output = interp1(nk_Hybrid(:,1),nk_Hybrid(:,2),x') + ...
-                       1i*interp1(nk_Hybrid(:,1),nk_Hybrid(:,3),x'); 
+            n_output = interp1(nk_Hybrid(:,1),nk_Hybrid(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Hybrid(:,1),nk_Hybrid(:,3),x','linear','extrap'); 
         case "hybrid_60"
             load('nk_Hybrid_60.mat');
             n_output = interp1(nk_Hybrid(:,1),nk_Hybrid(:,2),x','linear','extrap') + ...
@@ -178,11 +178,11 @@ function n_output = selectmaterial(material, lambda0)
                        1i*interp1(nk_AB56(:,1),nk_AB56(:,3),x','linear','extrap');
         case "ab56_ag"
             load('nk_AB56.mat');
-            n_ab = interp1(nk_AB56(:,1),nk_AB56(:,2),x') + ...
-                       1i*interp1(nk_AB56(:,1),nk_AB56(:,3),x'); 
+            n_ab = interp1(nk_AB56(:,1),nk_AB56(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_AB56(:,1),nk_AB56(:,3),x','linear','extrap'); 
             load('nk_Ag_Johnson.mat');
-            n_ag = interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,2),x') + ...
-                       1i*interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,3),x');
+            n_ag = interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,2),x','linear','extrap') + ...
+                       1i*interp1(nk_Ag_Johnson(:,1),nk_Ag_Johnson(:,3),x','linear','extrap');
             e_ab = n_ab^2;
             e_ag = n_ag^2;
             e_mix = combine(0.4,e_ag,e_ab);

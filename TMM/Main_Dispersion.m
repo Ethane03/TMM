@@ -1,4 +1,4 @@
-clear all; close all; clc;
+%clear all; close all; clc;
 currentfolder = pwd;
 
 %% Structure Definition and Sampling Parameters
@@ -7,17 +7,17 @@ d = [0,2, 30,250,100,100];
 % Corresponding materials
 n_structure = ["bk7", "ge","ag","dye1", "air", "air"];
 % Wavelength (nm) and incidence angle (degrees)
-L = 451;                               % Number of wavelength points
-M = 91;                                % Number of angle points
-lambda0   = linspace(400, 850, L);     % Wavelength range [nm]
-theta_deg = linspace(0, 90, M);        % Angle range [degrees] 
-name = 'Strucutre1';
+L = 400;                               % Number of wavelength points
+M = 100;                                % Number of angle points
+lambda0   = linspace(500, 800, L);     % Wavelength range [nm]
+theta_deg = linspace(0,90, M);        % Angle range [degrees] 
+name = 'Structure1';
 
 %% Run simulation and  Compute Reflection and Transmission
 theta0    = deg2rad(theta_deg);
-tic;
+%tic;
 [Rs,Rp,Ts,Tp,Ms,Ds,Mp,Dp,kx,n,beta,P,d,k0] = ART(d,lambda0,theta0,n_structure);
-toc;
+%toc;
 % Compute Absorptance
 As = 1 - Rs - Ts;
 Ap = 1 - Rp - Tp;
